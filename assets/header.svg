@@ -1,0 +1,122 @@
+<svg width="900" height="280" viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg" fill="none" font-family="'JetBrains Mono','Courier New',monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a14"/>
+      <stop offset="0.55" stop-color="#0d1024"/>
+      <stop offset="1" stop-color="#120a22"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7c5cff"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <radialGradient id="answerGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#7c5cff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#7c5cff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.2"/>
+    </filter>
+  </defs>
+
+  <!-- canvas -->
+  <rect width="900" height="280" rx="16" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="899" height="279" rx="16" stroke="#7c5cff" stroke-opacity="0.18"/>
+
+  <!-- faint grid -->
+  <g stroke="#7c5cff" stroke-opacity="0.05">
+    <path d="M0 70H900M0 140H900M0 210H900"/>
+    <path d="M150 0V280M300 0V280M450 0V280M600 0V280M750 0V280"/>
+  </g>
+
+  <!-- ===== LEFT: scattered document nodes (the corpus) ===== -->
+  <g>
+    <!-- doc 1 -->
+    <g transform="translate(60,60)">
+      <rect width="34" height="44" rx="4" fill="#11162e" stroke="#3a3a6a"/>
+      <path d="M7 12h20M7 20h20M7 28h12" stroke="#5b5b8a" stroke-width="2"/>
+    </g>
+    <!-- doc 2 -->
+    <g transform="translate(48,128)">
+      <rect width="34" height="44" rx="4" fill="#11162e" stroke="#3a3a6a"/>
+      <path d="M7 12h20M7 20h20M7 28h14" stroke="#5b5b8a" stroke-width="2"/>
+    </g>
+    <!-- doc 3 -->
+    <g transform="translate(74,196)">
+      <rect width="34" height="44" rx="4" fill="#11162e" stroke="#3a3a6a"/>
+      <path d="M7 12h20M7 20h16M7 28h20" stroke="#5b5b8a" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- ===== retrieval beams: docs -> retriever ===== -->
+  <g stroke="url(#accent)" stroke-width="1.6" fill="none">
+    <path d="M94 82 C 170 90, 200 120, 250 132" stroke-dasharray="6 8" opacity="0.5">
+      <animate attributeName="stroke-dashoffset" from="140" to="0" dur="2.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M82 150 C 160 150, 200 145, 250 140" stroke-dasharray="6 8" opacity="0.7">
+      <animate attributeName="stroke-dashoffset" from="140" to="0" dur="1.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M108 218 C 175 200, 205 165, 250 148" stroke-dasharray="6 8" opacity="0.5">
+      <animate attributeName="stroke-dashoffset" from="140" to="0" dur="2.6s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- ===== retriever node ===== -->
+  <g transform="translate(250,116)">
+    <rect width="56" height="48" rx="10" fill="#141433" stroke="#7c5cff" stroke-opacity="0.7"/>
+    <circle cx="28" cy="24" r="9" stroke="#22d3ee" stroke-width="2" fill="none"/>
+    <path d="M34 30 L42 38" stroke="#22d3ee" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="28" y="-8" fill="#8a8ab5" font-size="9" text-anchor="middle" letter-spacing="1">RETRIEVE</text>
+  </g>
+
+  <!-- retriever -> answer beam -->
+  <path d="M306 140 C 360 140, 380 140, 408 140" stroke="url(#accent)" stroke-width="2" stroke-dasharray="5 7">
+    <animate attributeName="stroke-dashoffset" from="120" to="0" dur="1.4s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- ===== answer node (the glowing result) ===== -->
+  <g transform="translate(408,108)">
+    <circle cx="32" cy="32" r="48" fill="url(#answerGlow)">
+      <animate attributeName="r" values="44;52;44" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="32" cy="32" r="26" fill="#0d1024" stroke="#22d3ee" stroke-width="1.5"/>
+    <path d="M22 32 l7 7 l13 -15" stroke="#22d3ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="32" y="-10" fill="#22d3ee" font-size="9" text-anchor="middle" letter-spacing="1">GROUNDED</text>
+  </g>
+
+  <!-- ===== RIGHT: identity ===== -->
+  <g transform="translate(520,0)">
+    <text x="0" y="92" fill="#e8e8ff" font-size="30" font-weight="700" letter-spacing="0.5">Abhishek Kumar</text>
+    <text x="0" y="126" fill="#e8e8ff" font-size="30" font-weight="700" letter-spacing="0.5">Chauhan</text>
+
+    <!-- accent rule -->
+    <rect x="2" y="142" width="64" height="3" rx="1.5" fill="url(#accent)"/>
+
+    <text x="0" y="172" fill="#9a9ad0" font-size="14" letter-spacing="0.5">AI/ML Engineer — building production</text>
+    <text x="0" y="192" fill="#9a9ad0" font-size="14" letter-spacing="0.5">RAG &amp; agentic systems</text>
+
+    <!-- tags -->
+    <g font-size="11" fill="#c8c8f0">
+      <g transform="translate(0,212)">
+        <rect width="78" height="22" rx="11" fill="#171738" stroke="#7c5cff" stroke-opacity="0.4"/>
+        <text x="39" y="15" text-anchor="middle" letter-spacing="0.5">Zipp.ai</text>
+      </g>
+      <g transform="translate(86,212)">
+        <rect width="138" height="22" rx="11" fill="#171738" stroke="#7c5cff" stroke-opacity="0.4"/>
+        <text x="69" y="15" text-anchor="middle" letter-spacing="0.5">NIT Allahabad '26</text>
+      </g>
+      <g transform="translate(232,212)">
+        <rect width="120" height="22" rx="11" fill="#171738" stroke="#22d3ee" stroke-opacity="0.4"/>
+        <text x="60" y="15" text-anchor="middle" letter-spacing="0.5">Regulatory AI</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- blinking cursor prompt, bottom-left -->
+  <g transform="translate(48,256)">
+    <text fill="#5b5b8a" font-size="11" letter-spacing="0.5">abhishek@rag:~$ query("how do I stand out?")</text>
+    <rect x="288" y="-9" width="7" height="12" fill="#22d3ee">
+      <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>
